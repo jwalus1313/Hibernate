@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+
+    <class name="net.javabeat.hibernate.Osoba" table="Osoba">
+        <id name="osobaId" column="osobaId" type="java.lang.Long" unsaved-value="0">
+           <generator class="increment"/>
+        </id>
+        <property name="imie" column="imie" type="java.lang.String"/>
+        <one-to-one name="adres" class="net.javabeat.hibernate.Adres"
+			cascade="save-update"></one-to-one>
+        <bag name="telefony" inverse="true" cascade="all" >
+            <key column="osobaId" />
+            <one-to-many class="net.javabeat.hibernate.Telefon"/>
+        </bag>
+    </class>
+</hibernate-mapping>

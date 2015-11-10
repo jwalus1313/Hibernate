@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="net.javabeat.hibernate.Adres" table="adres">
+		
+		<id name="osobaId" type="java.lang.Long">
+			<column name="OsobaID" />
+			<generator class="foreign">
+                <param name="property">osoba</param>
+            </generator>
+
+		</id>
+		<one-to-one name="osoba" class="net.javabeat.hibernate.Osoba"
+			constrained="true"></one-to-one>
+		<property name="ulica" column="AdresUlica" type="string"
+			length="250" />
+
+	</class>
+</hibernate-mapping>
